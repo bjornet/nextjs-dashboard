@@ -1,11 +1,4 @@
-const { Pool } = require('pg');
-
-const poolConfig = {
-  connectionString: process.env.POSTGRES_URL,
-  ssl: {
-    rejectUnauthorized: false,
-  },
-};
+const pool = require('../app/lib/db-setup.js');
 
 const {
   invoices,
@@ -170,8 +163,6 @@ async function seedRevenue(client) {
 }
 
 async function main() {
-  const pool = new Pool(poolConfig);
-
   try {
     // Seed the database
     await seedUsers(pool);
