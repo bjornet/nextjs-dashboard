@@ -28,7 +28,7 @@ export async function fetchRevenue() {
     // Don't do this in production :)
 
     console.log('Fetching revenue data...');
-    await new Promise((resolve) => setTimeout(resolve, 800));
+    await new Promise((resolve) => setTimeout(resolve, 3000));
 
     const data = (await pool.query(`SELECT * FROM revenue`)) as {
       rows: Revenue[];
@@ -53,6 +53,8 @@ export async function fetchLatestInvoices() {
   try {
 
     console.log('Fetching latest invoices...');
+
+    await new Promise((resolve) => setTimeout(resolve, 900));
 
     const data = (await pool.query(`
       SELECT invoices.amount, customers.name, customers.image_url, customers.email, invoices.id
