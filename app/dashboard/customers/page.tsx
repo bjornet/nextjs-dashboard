@@ -4,8 +4,6 @@ import Image from 'next/image';
 const CustomersPage = async () => {
   const res = await fetchCustomers();
 
-  console.log(res);
-
   return (
     <div>
       <h1>Customers</h1>
