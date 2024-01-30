@@ -3,21 +3,25 @@
 import { ArrowLeftIcon, ArrowRightIcon } from '@heroicons/react/24/outline';
 import clsx from 'clsx';
 import Link from 'next/link';
-import { generatePagination } from '@/app/lib/utils';
+import { createPageURL, generatePagination } from '@/app/lib/utils';
+import { usePathname, useSearchParams } from 'next/navigation';
+import { SearchParams } from '@/app/lib/enums';
 
 export default function Pagination({ totalPages }: { totalPages: number }) {
-  // NOTE: comment in this code when you get to this point in the course
+  const searchParams = useSearchParams();
+  const path = usePathname();
 
-  // const allPages = generatePagination(currentPage, totalPages);
+  const params = new URLSearchParams(searchParams.toString());
+  const currentPage = Number(params.get(SearchParams.Page)) || 1;
+
+  const allPages = generatePagination(currentPage, totalPages);
 
   return (
     <>
-      {/* NOTE: comment in this code when you get to this point in the course */}
-
-      {/* <div className="inline-flex">
+      <div className="inline-flex">
         <PaginationArrow
           direction="left"
-          href={createPageURL(currentPage - 1)}
+          href={createPageURL(currentPage - 1, params, path)}
           isDisabled={currentPage <= 1}
         />
 
@@ -33,7 +37,7 @@ export default function Pagination({ totalPages }: { totalPages: number }) {
             return (
               <PaginationNumber
                 key={page}
-                href={createPageURL(page)}
+                href={createPageURL(page, params, path)}
                 page={page}
                 position={position}
                 isActive={currentPage === page}
@@ -44,10 +48,10 @@ export default function Pagination({ totalPages }: { totalPages: number }) {
 
         <PaginationArrow
           direction="right"
-          href={createPageURL(currentPage + 1)}
+          href={createPageURL(currentPage + 1, params, path)}
           isDisabled={currentPage >= totalPages}
         />
-      </div> */}
+      </div>
     </>
   );
 }

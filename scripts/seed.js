@@ -36,7 +36,7 @@ async function seedUsers(client) {
       }),
     );
 
-    console.log(`Seeded ${insertedUsers.length} users`);
+    console.info(`Seeded ${insertedUsers.length} users`);
 
     return {
       createTable,
@@ -63,7 +63,7 @@ async function seedInvoices(client) {
   );
 `);
 
-    console.log(`Created "invoices" table`);
+    console.info(`Created "invoices" table`);
 
     // Insert data into the "invoices" table
     const insertedInvoices = await Promise.all(
@@ -76,7 +76,7 @@ async function seedInvoices(client) {
       ),
     );
 
-    console.log(`Seeded ${insertedInvoices.length} invoices`);
+    console.info(`Seeded ${insertedInvoices.length} invoices`);
 
     return {
       createTable,
@@ -102,7 +102,7 @@ async function seedCustomers(client) {
       );
     `);
 
-    console.log(`Created "customers" table`);
+    console.info(`Created "customers" table`);
 
     // Insert data into the "customers" table
     const insertedCustomers = await Promise.all(
@@ -115,7 +115,7 @@ async function seedCustomers(client) {
       ),
     );
 
-    console.log(`Seeded ${insertedCustomers.length} customers`);
+    console.info(`Seeded ${insertedCustomers.length} customers`);
 
     return {
       createTable,
@@ -137,7 +137,7 @@ async function seedRevenue(client) {
       );
     `);
 
-    console.log(`Created "revenue" table`);
+    console.info(`Created "revenue" table`);
 
     // Insert data into the "revenue" table
     const insertedRevenue = await Promise.all(
@@ -150,7 +150,7 @@ async function seedRevenue(client) {
       ),
     );
 
-    console.log(`Seeded ${insertedRevenue.length} revenue`);
+    console.info(`Seeded ${insertedRevenue.length} revenue`);
 
     return {
       createTable,

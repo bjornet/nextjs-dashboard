@@ -1,4 +1,5 @@
 import { Revenue } from './definitions';
+import { SearchParams } from './enums';
 
 export const formatCurrency = (amount: number) => {
   return (amount / 100).toLocaleString('en-US', {
@@ -66,4 +67,14 @@ export const generatePagination = (currentPage: number, totalPages: number) => {
     '...',
     totalPages,
   ];
+};
+
+export const createPageURL = (
+  page: number | string,
+  params: URLSearchParams,
+  path: string,
+) => {
+  params.set(SearchParams.Page, page.toString());
+
+  return `${path}?${params.toString()}`;
 };
